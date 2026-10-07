@@ -1,0 +1,107 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ضع هنا الـ UID الخاص بحساب الأدمن (Authentication > Users)
+    function isAdmin() {
+      return request.auth != null && request.auth.uid == "mDJjy3jk57e0uNYosbE1SyEaHHB3";
+    }
+
+    // طلبات انضمام المدرسين: أي زائر يقدر يرسل طلب فقط، والأدمن بس يقرأ ويعدل
+    match /applications/{id} {
+      allow create: if request.resource.data.status == "pending"
+        && request.resource.data.agreedToTerms == true
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 100
+        && request.resource.data.name.matches('[^ ]+ +[^ ]+ +[^ ]+.*')
+        && request.resource.data.phone is string
+        && request.resource.data.phone.matches('01[0125][0-9]{8}')
+        && request.resource.data.description.size() <= 2000
+        && request.resource.data.image.matches('https://.*')
+        && request.resource.data.qualification.size() <= 150
+        && request.resource.data.university.size() <= 150
+        && request.resource.data.currentWorkplace.size() <= 150
+        && request.resource.data.availability.size() <= 300
+        && request.resource.data.achievements.size() <= 1000
+        && (request.resource.data.certificateUrl == '' || request.resource.data.certificateUrl.matches('https://.*'))
+        && (request.resource.data.socialUrl == '' || request.resource.data.socialUrl.matches('https://.*'))
+        && request.resource.data.keys().hasOnly([
+          'name','phone','email','subjects','educationLevels','locations',
+          'description','teachingMethod','image','status','agreedToTerms','submittedAt',
+          'gender','qualification','university','experienceYears','currentWorkplace',
+          'hourlyPrice','availability','achievements','certificateUrl','socialUrl'
+        ]);
+      allow read, update, delete: if isAdmin();
+    }
+
+    // بيانات المدرس العامة (بدون رقم أو إيميل) - تظهر للزوار لو معتمد فقط
+    match /teachers/{id} {
+      allow read: if resource.data.status == "approved" || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // بيانات المدرس الخاصة (رقم وإيميل) - للأدمن فقط
+    match /teacherPrivate/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // طلبات الطلاب/أولياء الأمور
+    match /leads/{id} {
+      allow create: if request.resource.data.status == "new"
+        && request.resource.data.name.size() <= 100
+        && request.resource.data.phone.size() <= 20;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // رسائل صفحة تواصل معنا
+    match /messages/{id} {
+      allow create: if request.resource.data.status == "new"
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 100
+        && request.resource.data.phone.size() <= 20
+        && request.resource.data.email.size() <= 150
+        && request.resource.data.subject.size() <= 200
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() <= 3000
+        && request.resource.data.keys().hasOnly([
+          'name','phone','email','subject','message','status','createdAt'
+        ]);
+      allow read, update, delete: if isAdmin();
+    }
+
+    // تسجيل الطلاب وأولياء الأمور
+    match /students/{id} {
+      allow create: if request.resource.data.status == "new"
+        && request.resource.data.offerUsed == false
+        && request.resource.data.name.size() > 1
+        && request.resource.data.name.size() <= 100
+        && request.resource.data.phone.matches('01[0125][0-9]{8}')
+        && request.resource.data.notes.size() <= 1500
+        && request.resource.data.preferredTimes.size() <= 300
+        && request.resource.data.keys().hasOnly([
+          'name','phone','role','level','subjects','area','preferredTimes','notes',
+          'teacherCode','couponCode','offerFreeLesson','discountPercent','offerUsed',
+          'adminNotes','status','createdAt'
+        ]);
+      allow read, update, delete: if isAdmin();
+    }
+
+    // القوائم العامة (مواد / مراحل / أماكن): الكل يقرأ، والأدمن بس يعدّل
+    match /subjects/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /educationLevels/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /locations/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /meta/{doc} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
