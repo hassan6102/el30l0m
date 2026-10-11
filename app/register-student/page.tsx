@@ -1,5 +1,6 @@
 "use client"
 
+import { SiteNavbar } from "@/components/site-navbar"
 import type React from "react"
 import { useEffect, useState } from "react"
 import Link from "next/link"
@@ -101,14 +102,7 @@ export default function RegisterStudentPage() {
 
   return (
     <div className="min-h-screen bg-gray-50" dir="rtl">
-      <header className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4">
-          <Link href="/" className="flex items-center gap-3">
-            <BookOpen className="h-8 w-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">{SITE_NAME}</h1>
-          </Link>
-        </div>
-      </header>
+      <SiteNavbar />
 
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <div className="rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 p-6 text-white mb-8 text-center">

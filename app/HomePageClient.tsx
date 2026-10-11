@@ -1,6 +1,7 @@
 
 
 "use client"
+import { SiteNavbar } from "@/components/site-navbar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -38,45 +39,7 @@ export default function HomePage() {
      
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white" dir="rtl">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b sticky top-0 z-50 backdrop-blur-sm bg-white/95">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4 space-x-reverse">
-              <BookOpen className="h-8 w-8 text-blue-600" />
-              <h1 className="text-2xl font-bold text-gray-900">{SITE_NAME}</h1>
-            </div>
-            <nav className="hidden md:flex items-center space-x-6 space-x-reverse">
-              <Link href="/" className="text-blue-600 font-semibold">
-                الرئيسية
-              </Link>
-              <Link href="/teachers" className="text-gray-700 hover:text-blue-600 transition-colors">
-                المدرسين
-              </Link>
-              <Link href="/subjects" className="text-gray-700 hover:text-blue-600 transition-colors">
-                المواد
-              </Link>
-              <Link href="/levels" className="text-gray-700 hover:text-blue-600 transition-colors">
-                المراحل
-              </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">
-                تواصل معنا
-              </Link>
-            </nav>
-            <div className="flex items-center space-x-4 space-x-reverse">
-              <Link href="/register-teacher">
-                <Button variant="outline" className="hover:bg-blue-50 hover:text-blue-700">
-                  سجّل كمدرس
-                </Button>
-              </Link>
-              <Link href="/register-student">
-                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                  سجّل كطالب 🎁
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <SiteNavbar />
 
       {/* Hero Section */}
       <section className="py-20 px-4 relative overflow-hidden">
@@ -321,7 +284,9 @@ export default function HomePage() {
             <div>
               <div className="flex items-center space-x-2 space-x-reverse mb-4">
                 <BookOpen className="h-6 w-6" />
-                <h5 className="text-lg font-semibold">{SITE_NAME}</h5>
+                <h5 className="text-lg font-extrabold" style={{ fontFamily: "var(--font-brand), sans-serif" }}>
+                  {SITE_NAME}
+                </h5>
               </div>
               <p className="text-gray-400 mb-4">منصة شاملة لربط الطلاب بأفضل المدرسين الخصوصيين</p>
               <div className="flex items-center space-x-4 space-x-reverse">

@@ -1,5 +1,6 @@
 "use client"
 
+import { SiteNavbar } from "@/components/site-navbar"
 import { SITE_NAME } from "@/lib/config"
 import { useState, useMemo, useCallback } from "react"
 import { Button } from "@/components/ui/button"
@@ -86,33 +87,7 @@ export default function TeachersPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50" dir="rtl">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b sticky top-0 z-40 backdrop-blur-sm bg-white/95">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-4 space-x-reverse">
-              <BookOpen className="h-8 w-8 text-blue-600" />
-              <h1 className="text-2xl font-bold text-gray-900">{SITE_NAME}</h1>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-6 space-x-reverse">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">
-                الرئيسية
-              </Link>
-              <Link href="/teachers" className="text-blue-600 font-semibold">
-                المدرسين
-              </Link>
-              <Link href="/subjects" className="text-gray-700 hover:text-blue-600 transition-colors">
-                المواد
-              </Link>
-              <Link href="/levels" className="text-gray-700 hover:text-blue-600 transition-colors">
-                المراحل
-              </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">
-                تواصل معنا
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <SiteNavbar />
 
       <div className="container mx-auto px-4 py-8">
         {/* Page Header */}

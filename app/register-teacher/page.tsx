@@ -1,5 +1,6 @@
 "use client"
 
+import { SiteNavbar } from "@/components/site-navbar"
 import { SITE_NAME } from "@/lib/config"
 import type React from "react"
 
@@ -164,33 +165,7 @@ export default function RegisterTeacherPage() {
   return (
     <div className="min-h-screen bg-gray-50" dir="rtl">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-4 space-x-reverse">
-              <BookOpen className="h-8 w-8 text-blue-600" />
-              <h1 className="text-2xl font-bold text-gray-900">{SITE_NAME}</h1>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-6 space-x-reverse">
-              <Link href="/" className="text-gray-700 hover:text-blue-600">
-                الرئيسية
-              </Link>
-              <Link href="/teachers" className="text-gray-700 hover:text-blue-600">
-                المدرسين
-              </Link>
-              <Link href="/subjects" className="text-gray-700 hover:text-blue-600">
-                المواد
-              </Link>
-              <Link href="/levels" className="text-gray-700 hover:text-blue-600">
-                المراحل
-              </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-600">
-                تواصل معنا
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <SiteNavbar />
 
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
