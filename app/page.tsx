@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "منصة المدرسين | Hassan Platform",
+  title: "منصة العلوم",
   description: "أفضل منصة للبحث عن مدرسين لكل المراحل التعليمية",
 };
 

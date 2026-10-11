@@ -27,3 +27,7 @@ export const OFFER = {
   discountPercent: 10,
   title: "عرض الترحيب للطلاب الجدد",
 }
+
+// اسم الموقع واسم المطوّر (غيّرهم من هنا وهيتغيروا في كل الصفحات)
+export const SITE_NAME = "منصة العلوم"
+export const DEVELOPER_NAME = "حسن"

@@ -13,7 +13,7 @@ import { Eye, EyeOff, Pencil, Trash2, Phone, Mail, Loader2, Star, MessageCircle,
 import { db } from "@/lib/firebase"
 import { useSiteData } from "@/lib/site-data"
 import { isValidImageUrl } from "@/lib/applications"
-import { waLink } from "@/lib/config"
+import { waLink, SITE_NAME } from "@/lib/config"
 
 interface AdminTeacher {
   id: string
@@ -252,7 +252,7 @@ export function TeachersPanel() {
               <div className="flex flex-wrap gap-2">
                 {priv[t.id]?.phone && (
                   <a
-                    href={waLink(priv[t.id].phone as string, `مرحباً أستاذ ${t.name}، معاك من منصة المدرسين.`)}
+                    href={waLink(priv[t.id].phone as string, `مرحباً أستاذ ${t.name}، معاك من ${SITE_NAME}.`)}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

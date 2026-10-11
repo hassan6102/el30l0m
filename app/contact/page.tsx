@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { ownerWhatsappLink } from "@/lib/config"
+import { ownerWhatsappLink, SITE_NAME } from "@/lib/config"
 import { submitContactMessage } from "@/lib/forms"
 
 import { useState } from "react"
@@ -55,7 +55,7 @@ export default function ContactPage() {
   }
 
   const handleWhatsApp = () => {
-    const message = "مرحباً، أريد الاستفسار عن منصة المدرسين"
+    const message = `مرحباً، أريد الاستفسار عن ${SITE_NAME}`
     const whatsappUrl = ownerWhatsappLink(message)
     window.open(whatsappUrl, "_blank")
   }
@@ -92,7 +92,7 @@ export default function ContactPage() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-4 space-x-reverse">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              <h1 className="text-2xl font-bold text-gray-900">منصة المدرسين</h1>
+              <h1 className="text-2xl font-bold text-gray-900">{SITE_NAME}</h1>
             </Link>
             <nav className="hidden md:flex items-center space-x-6 space-x-reverse">
               <Link href="/" className="text-gray-700 hover:text-blue-600">

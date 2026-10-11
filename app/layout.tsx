@@ -3,7 +3,7 @@ import "./globals.css"
 import { SiteDataProvider } from "@/lib/site-data"
 
 export const metadata: Metadata = {
-  title: "منصة المدرسين",
+  title: "منصة العلوم",
   description: "أفضل منصة للبحث عن مدرسين لكل المراحل التعليمية",
 }
 

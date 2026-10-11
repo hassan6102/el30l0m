@@ -19,7 +19,7 @@ import { CheckCircle, XCircle, Loader2, Phone, Mail, MessageCircle, ChevronDown 
 import { db } from "@/lib/firebase"
 import { isValidImageUrl } from "@/lib/applications"
 import { useSiteData } from "@/lib/site-data"
-import { waLink } from "@/lib/config"
+import { waLink, SITE_NAME } from "@/lib/config"
 
 type Status = "pending" | "approved" | "rejected"
 
@@ -283,7 +283,7 @@ export function ApplicationsPanel() {
                 </div>
                 <div>
                   <a
-                    href={waLink(app.phone, `مرحباً أستاذ ${app.name}، معاك من منصة المدرسين بخصوص طلب انضمامك.`)}
+                    href={waLink(app.phone, `مرحباً أستاذ ${app.name}، معاك من ${SITE_NAME} بخصوص طلب انضمامك.`)}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

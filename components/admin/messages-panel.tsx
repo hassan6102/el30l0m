@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Loader2, MessageCircle, Mail, Phone, Trash2, CheckCheck } from "lucide-react"
 import { db } from "@/lib/firebase"
-import { waLink } from "@/lib/config"
+import { waLink, SITE_NAME } from "@/lib/config"
 
 interface Msg {
   id: string
@@ -101,7 +101,7 @@ export function MessagesPanel() {
             </div>
             <div className="flex flex-wrap gap-2 pt-1">
               <a
-                href={waLink(m.phone, `مرحباً ${m.name}، بخصوص رسالتك على منصة المدرسين: ${m.subject}`)}
+                href={waLink(m.phone, `مرحباً ${m.name}، بخصوص رسالتك على ${SITE_NAME}: ${m.subject}`)}
                 target="_blank"
                 rel="noopener noreferrer"
               >

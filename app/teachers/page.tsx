@@ -1,5 +1,6 @@
 "use client"
 
+import { SITE_NAME } from "@/lib/config"
 import { useState, useMemo, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { BookOpen } from "lucide-react"
@@ -90,7 +91,7 @@ export default function TeachersPage() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-4 space-x-reverse">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              <h1 className="text-2xl font-bold text-gray-900">منصة المدرسين</h1>
+              <h1 className="text-2xl font-bold text-gray-900">{SITE_NAME}</h1>
             </Link>
             <nav className="hidden md:flex items-center space-x-6 space-x-reverse">
               <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">

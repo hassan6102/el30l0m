@@ -12,7 +12,7 @@ import { BookOpen, Lock, User, AlertCircle } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "@/lib/firebase"
-import { ADMIN_UID } from "@/lib/config"
+import { ADMIN_UID, SITE_NAME } from "@/lib/config"
 
 export default function AdminLoginPage() {
   const [credentials, setCredentials] = useState({
@@ -52,7 +52,7 @@ export default function AdminLoginPage() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 space-x-reverse mb-4">
             <BookOpen className="h-10 w-10 text-blue-600" />
-            <h1 className="text-3xl font-bold text-gray-900">منصة المدرسين</h1>
+            <h1 className="text-3xl font-bold text-gray-900">{SITE_NAME}</h1>
           </div>
           <p className="text-gray-600">لوحة تحكم الإدارة</p>
         </div>

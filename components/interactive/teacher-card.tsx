@@ -110,55 +110,69 @@ export function TeacherCard({ teacher, showAnimation = true }: TeacherCardProps)
               <span className="mr-2 text-sm text-gray-600">({teacher.reviewsCount} تقييم)</span>
             </div>
           ) : (
-            <p className="mb-3 text-sm text-gray-500"> </p>
+            <p className="mb-3 text-sm text-gray-500">مدرس جديد</p>
           )}
         </div>
 
-        <div className="grid grid-cols-2 gap-3 mb-4">
-  <div className="min-w-0">
-    <div className="flex items-center text-sm text-gray-600 mb-2">
-      <BookOpen className="h-4 w-4 ml-2 shrink-0" />
-      المواد:
-    </div>
-    <div className="flex flex-wrap gap-1">
-      {teacher.subjects.slice(0, 2).map((subject, index) => (
-        <Badge
-          key={index}
-          variant="secondary"
-          className="text-xs hover:bg-blue-100 hover:text-blue-700 transition-colors cursor-pointer"
-        >
-          {subject}
-        </Badge>
-      ))}
-      {teacher.subjects.length > 2 && (
-        <Badge variant="outline" className="text-xs">
-          +{teacher.subjects.length - 2}
-        </Badge>
-      )}
-    </div>
-  </div>
+        <div className="space-y-3 mb-4">
+          <div>
+            <div className="flex items-center text-sm text-gray-600 mb-2">
+              <BookOpen className="h-4 w-4 ml-2" />
+              المواد:
+            </div>
+            <div className="flex flex-wrap gap-1">
+              {teacher.subjects.slice(0, 3).map((subject, index) => (
+                <Badge
+                  key={index}
+                  variant="secondary"
+                  className="text-xs hover:bg-blue-100 hover:text-blue-700 transition-colors cursor-pointer"
+                >
+                  {subject}
+                </Badge>
+              ))}
+              {teacher.subjects.length > 3 && (
+                <Badge variant="outline" className="text-xs">
+                  +{teacher.subjects.length - 3}
+                </Badge>
+              )}
+            </div>
+          </div>
 
-  <div className="min-w-0">
-    <div className="flex items-center text-sm text-gray-600 mb-2">
-      <MapPin className="h-4 w-4 ml-2 shrink-0" />
-      الأماكن:
-    </div>
-    <div className="flex flex-wrap gap-1">
-      {teacher.locations.slice(0, 2).map((location, index) => (
-        <Badge key={index} variant="outline" className="text-xs">
-          {location}
-        </Badge>
-      ))}
-      {teacher.locations.length > 2 && (
-        <Badge variant="outline" className="text-xs">
-          +{teacher.locations.length - 2}
-        </Badge>
-      )}
-    </div>
-  </div>
-</div>
+          <div>
+            <div className="flex items-center text-sm text-gray-600 mb-2">
+              <MapPin className="h-4 w-4 ml-2" />
+              الأماكن:
+            </div>
+            <div className="flex flex-wrap gap-1">
+              {teacher.locations.slice(0, 2).map((location, index) => (
+                <Badge key={index} variant="outline" className="text-xs">
+                  {location}
+                </Badge>
+              ))}
+              {teacher.locations.length > 2 && (
+                <Badge variant="outline" className="text-xs">
+                  +{teacher.locations.length - 2}
+                </Badge>
+              )}
+            </div>
+          </div>
+        </div>
 
-       
+        {/* Quick Preview */}
+        <div className="mb-4">
+          <button
+            onClick={() => setShowDetails(!showDetails)}
+            className="flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors"
+          >
+            {showDetails ? <EyeOff className="h-4 w-4 ml-1" /> : <Eye className="h-4 w-4 ml-1" />}
+            {showDetails ? "إخفاء التفاصيل" : "عرض التفاصيل"}
+          </button>
+          {showDetails && (
+            <div className="mt-2 p-3 bg-gray-50 rounded-lg text-sm text-gray-700 animate-in slide-in-from-top-2 duration-200">
+              <p className="line-clamp-3">{teacher.description}</p>
+            </div>
+          )}
+        </div>
 
         {/* Action Buttons */}
         <div className="space-y-2">
@@ -166,10 +180,33 @@ export function TeacherCard({ teacher, showAnimation = true }: TeacherCardProps)
             <Button className="w-full group-hover:bg-blue-700 transition-colors">عرض الملف الشخصي</Button>
           </Link>
 
-          
+          <div className="grid grid-cols-2 gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleQuickContact}
+              className="flex items-center justify-center hover:bg-green-50 hover:text-green-700 hover:border-green-300"
+            >
+              <MessageCircle className="h-4 w-4 ml-1" />
+              واتساب
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="flex items-center justify-center hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300"
+            >
+              <Phone className="h-4 w-4 ml-1" />
+              اتصال
+            </Button>
+          </div>
         </div>
 
-       
+        {/* Experience Badge */}
+        <div className="mt-3 text-center">
+          <Badge variant="outline" className="text-xs">
+            انضم في {new Date(teacher.joinDate).getFullYear()}
+          </Badge>
+        </div>
       </CardContent>
 
       {/* Hover Effect Overlay */}

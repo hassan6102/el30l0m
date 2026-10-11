@@ -13,7 +13,7 @@ import { BookOpen, CheckCircle, AlertCircle, Loader2, Gift, MessageCircle } from
 import { useSiteData } from "@/lib/site-data"
 import { submitStudent } from "@/lib/forms"
 import { isValidEgyptPhone, normalizePhone } from "@/lib/applications"
-import { OFFER, ownerWhatsappLink } from "@/lib/config"
+import { OFFER, ownerWhatsappLink, SITE_NAME } from "@/lib/config"
 
 export default function RegisterStudentPage() {
   const { subjects, educationLevels, locations } = useSiteData()
@@ -105,7 +105,7 @@ export default function RegisterStudentPage() {
         <div className="container mx-auto px-4 py-4">
           <Link href="/" className="flex items-center gap-3">
             <BookOpen className="h-8 w-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">منصة المدرسين</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{SITE_NAME}</h1>
           </Link>
         </div>
       </header>

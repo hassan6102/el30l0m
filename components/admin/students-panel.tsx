@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Loader2, MessageCircle, Phone, Trash2, Gift, ChevronDown } from "lucide-react"
 import { db } from "@/lib/firebase"
-import { waLink } from "@/lib/config"
+import { waLink, SITE_NAME } from "@/lib/config"
 
 type Status = "new" | "contacted" | "matched" | "started" | "closed"
 
@@ -208,7 +208,7 @@ export function StudentsPanel() {
               <a
                 href={waLink(
                   s.phone,
-                  `مرحباً ${s.name}، معاك من منصة المدرسين. شفنا طلبك (${s.subjects?.join("، ")} - ${s.level}) وكود العرض بتاعك ${s.couponCode}.`,
+                  `مرحباً ${s.name}، معاك من ${SITE_NAME}. شفنا طلبك (${s.subjects?.join("، ")} - ${s.level}) وكود العرض بتاعك ${s.couponCode}.`,
                 )}
                 target="_blank"
                 rel="noopener noreferrer"

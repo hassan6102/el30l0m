@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Search, Star, BookOpen, Users, Award, Phone, Mail } from "lucide-react"
 import Link from "next/link"
 import { useSiteData } from "@/lib/site-data"
-import { OFFER } from "@/lib/config"
+import { OFFER, SITE_NAME, OWNER_WHATSAPP, ownerWhatsappLink, DEVELOPER_NAME } from "@/lib/config"
 import { FeaturedSlider } from "@/components/interactive/featured-slider"
 import { StatsCounter } from "@/components/interactive/stats-counter"
 import { TeacherCard } from "@/components/interactive/teacher-card"
@@ -43,7 +43,7 @@ export default function HomePage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4 space-x-reverse">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              <h1 className="text-2xl font-bold text-gray-900">منصة المدرسين</h1>
+              <h1 className="text-2xl font-bold text-gray-900">{SITE_NAME}</h1>
             </div>
             <nav className="hidden md:flex items-center space-x-6 space-x-reverse">
               <Link href="/" className="text-blue-600 font-semibold">
@@ -321,16 +321,20 @@ export default function HomePage() {
             <div>
               <div className="flex items-center space-x-2 space-x-reverse mb-4">
                 <BookOpen className="h-6 w-6" />
-                <h5 className="text-lg font-semibold">منصة المدرسين</h5>
+                <h5 className="text-lg font-semibold">{SITE_NAME}</h5>
               </div>
               <p className="text-gray-400 mb-4">منصة شاملة لربط الطلاب بأفضل المدرسين الخصوصيين</p>
               <div className="flex items-center space-x-4 space-x-reverse">
                 <Phone className="h-4 w-4" />
-                <span className="text-sm">01234567890</span>
-              </div>
-              <div className="flex items-center space-x-4 space-x-reverse mt-2">
-                <Mail className="h-4 w-4" />
-                <span className="text-sm">info@teachers-platform.com</span>
+                <a
+                  href={ownerWhatsappLink(`مرحباً، أريد الاستفسار عن ${SITE_NAME}`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm hover:text-white transition-colors"
+                  dir="ltr"
+                >
+                  {OWNER_WHATSAPP.replace(/^20/, "0")}
+                </a>
               </div>
             </div>
             <div>
@@ -391,7 +395,12 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 منصة المدرسين. جميع الحقوق محفوظة.</p>
+            <p>
+              &copy; {new Date().getFullYear()} {SITE_NAME}. جميع الحقوق محفوظة.
+            </p>
+            <p className="mt-2 text-sm">
+              تصميم وتطوير: <span className="font-semibold text-white">{DEVELOPER_NAME}</span>
+            </p>
           </div>
         </div>
       </footer>
