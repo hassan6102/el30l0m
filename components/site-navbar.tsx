@@ -63,7 +63,7 @@ export function SiteNavbar() {
       className="sticky top-0 z-40 border-b border-gray-200/70 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75"
       style={brandFont}
     >
-      <div className="container mx-auto flex h-14 items-center justify-between gap-3 px-4 md:h-16">
+      <div className="container mx-auto flex h-16 items-center justify-between gap-3 px-4 md:h-[68px]">
         <Link href="/" aria-label={SITE_NAME}>
           <BrandLogo />
         </Link>
