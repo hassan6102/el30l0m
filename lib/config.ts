@@ -30,4 +30,4 @@ export const OFFER = {
 
 // اسم الموقع واسم المطوّر (غيّرهم من هنا وهيتغيروا في كل الصفحات)
 export const SITE_NAME = "منصة العلوم"
-export const DEVELOPER_NAME = "حسن"
+export const DEVELOPER_NAME = "Eng. Hassan Mousa"
