@@ -36,18 +36,18 @@ export function BrandLogo({ light = false }: { light?: boolean }) {
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-indigo-600 shadow-sm shadow-blue-600/30">
         <GraduationCap className="h-5 w-5 text-white" />
       </span>
-      <span className="flex flex-col leading-none">
-        <span
-          className={`text-[19px] font-extrabold tracking-tight ${
-            light ? "text-white" : "bg-gradient-to-l from-blue-900 to-indigo-600 bg-clip-text text-transparent"
-          }`}
-        >
-          {SITE_NAME}
-        </span>
-        <span className={`mt-1 text-[10px] font-semibold ${light ? "text-blue-100" : "text-gray-500"}`}>
-          تعليم بثقة
-        </span>
-      </span>
+      <span className="flex flex-col">
+  <span
+    className={`pb-0.5 text-[20px] font-extrabold leading-[1.5] ${
+      light ? "text-white" : "bg-gradient-to-l from-blue-900 to-indigo-600 bg-clip-text text-transparent"
+    }`}
+  >
+    {SITE_NAME}
+  </span>
+  <span className={`-mt-1 text-[10px] font-semibold leading-none ${light ? "text-blue-100" : "text-gray-500"}`}>
+    تعليم بثقة
+  </span>
+</span>
     </span>
   )
 }
